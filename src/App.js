@@ -1,11 +1,25 @@
-import './App.css';
-import Memory from './components/Memory';
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Editor from "./components/Editor";
+import Memory from "./components/Memory";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <Memory />
-    </div>
+    <Router>
+      <Navbar />
+      <div className="App">
+        <Switch>
+          <Route exact path="/editor">
+            <Editor />
+          </Route>
+          <Route exact path="/memory">
+            <Memory />
+          </Route>
+          <h1>404 INVALID ROUTE</h1>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
