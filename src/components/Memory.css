@@ -1,0 +1,8 @@
+.word {
+    border: solid black 1px;
+    padding: 10px;
+}
+
+.row {
+    display: flex;
+}
