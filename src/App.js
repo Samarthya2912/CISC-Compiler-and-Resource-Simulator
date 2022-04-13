@@ -3,9 +3,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Editor from "./components/Editor";
 import Memory from "./components/Memory";
 import Navbar from "./components/Navbar";
-import ResourceContextProvider from "./contexts/resources";
+import ResourceContextProvider, { resourceContext } from "./contexts/resources";
+import { useContext, useEffect } from "react";
 
 function App() {
+
+
   return (
     <Router>
       <ResourceContextProvider>

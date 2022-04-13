@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
-import compile from "../functions/compile";
 import "./Editor.css";
+import useResources from "../hooks/useResources";
+import { resourceContext } from "../contexts/resources";
+import { useContext, useEffect } from "react";
 
 const Editor = () => {
   const [code, setCode] = useState("");
-
+  const allocateMemory = useResources();
+  const [resources] = useContext(resourceContext);
+  useEffect(() => {
+    console.log(resources.MEMORY);
+  }, [resources.MEMORY]);
   return (
     <div className="container">
       <TextField
@@ -16,15 +22,7 @@ const Editor = () => {
         value={code}
         onChange={(e) => setCode(e.target.value)}
       ></TextField>
-      <Button
-        variant="contained"
-        onClick={() => {
-          compile(code);
-        }}
-        style={{ margin: "10px" }}
-      >
-        Compile
-      </Button>
+      <Button onClick={() => allocateMemory(code)}>Compile</Button>
     </div>
   );
 };
