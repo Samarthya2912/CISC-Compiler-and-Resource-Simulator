@@ -6,7 +6,13 @@ export const resourceContext = createContext();
 export default function ResourceContextProvider(props) {
   const rows = 16;
   const cols = 8;
-  const memory_arr = Array(rows).fill(Array(cols).fill(new bitset(16)));
+  const memory_arr = [];
+  for (let i = 0; i < rows; i++) {
+    memory_arr.push([]);
+    for (let j = 0; j < cols; j++) {
+      memory_arr[i].push(new bitset(16));
+    }
+  }
 
   const [resources, setResources] = useState({
     AR: new bitset(16),
@@ -21,8 +27,8 @@ export default function ResourceContextProvider(props) {
   });
 
   return (
-    <resourceContext.Provider
-      value={[resources, setResources]}
-    >{props.children}</resourceContext.Provider>
+    <resourceContext.Provider value={[resources, setResources]}>
+      {props.children}
+    </resourceContext.Provider>
   );
 }
