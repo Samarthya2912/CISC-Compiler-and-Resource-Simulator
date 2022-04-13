@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Button, TextField } from "@mui/material";
+import compile from "../functions/compile";
+import "./Editor.css";
 
 const Editor = () => {
+  const [code, setCode] = useState("");
+
   return (
     <div className="container">
-      <textarea name="editor" id="editor" cols="75" rows="30" placeholder="Type code here..."></textarea>
+      <TextField
+        placeholder="Type code here..."
+        multiline
+        rows={20}
+        style={{ minWidth: "400px" }}
+        value={code}
+        onChange={(e) => setCode(e.target.value)}
+      ></TextField>
+      <Button
+        variant="contained"
+        onClick={() => {
+          compile(code);
+        }}
+        style={{ margin: "10px" }}
+      >
+        Compile
+      </Button>
     </div>
   );
 };
