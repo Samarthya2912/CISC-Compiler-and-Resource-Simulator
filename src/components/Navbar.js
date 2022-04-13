@@ -5,7 +5,7 @@ import "./Navbar.css";
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <Link to="/editor">Editor</Link>
+      <Link to="/">Editor</Link>
       <Link to="/memory">Memory</Link>
     </nav>
   );

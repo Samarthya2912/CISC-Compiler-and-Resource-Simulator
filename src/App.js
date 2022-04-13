@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Editor from "./components/Editor";
 import Memory from "./components/Memory";
 import Navbar from "./components/Navbar";
@@ -10,7 +10,7 @@ function App() {
       <Navbar />
       <div className="App">
         <Switch>
-          <Route exact path="/editor">
+          <Route exact path="/">
             <Editor />
           </Route>
           <Route exact path="/memory">
