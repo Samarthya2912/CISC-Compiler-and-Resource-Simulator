@@ -33,4 +33,7 @@ mp["SKO"] = bitset.hex2bin("F100");
 mp["ION"] = bitset.hex2bin("F080");
 mp["IOF"] = bitset.hex2bin("F040");
 
+/* delimiter */
+mp[""] = bitset.hex2bin("0000");
+
 export default mp;
