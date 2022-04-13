@@ -3,8 +3,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Editor from "./components/Editor";
 import Memory from "./components/Memory";
 import Navbar from "./components/Navbar";
+import mp from "./utils/translation_map";
 
 function App() {
+  console.log(mp);
+
   return (
     <Router>
       <Navbar />
