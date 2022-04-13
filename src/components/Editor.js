@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
 import compile from "../functions/compile";
 import "./Editor.css";

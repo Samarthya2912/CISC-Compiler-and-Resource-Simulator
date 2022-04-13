@@ -1,12 +1,13 @@
 import React from "react";
 import "./Memory.css"
+import bitset from "../bitset";
 
-const rows = 16, cols = 16;
+const rows = 16, cols = 8;
 const memory = [];
 for (let i = 0; i < rows; i++) {
     memory.push([]);
     for(let j = 0; j < cols; j++) {
-        memory[i].push("00000000");
+        memory[i].push(new bitset(16));
     }
 }
 
@@ -17,7 +18,7 @@ const Memory = () => {
         <div className="row" key={row_index}>
           {row.map((word, col_index) => (
             <div key={col_index} className="word">
-              {word}
+              {word.to_string()}
             </div>
           ))}
         </div>
