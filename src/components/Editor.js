@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Alert, Button, TextField } from "@mui/material";
+import { Alert, Button, ButtonGroup, TextField } from "@mui/material";
 import "./Editor.css";
 import useResources from "../hooks/useResources";
+import useExecute from "../hooks/useExecute";
 
 const Editor = () => {
   const [code, setCode] = useState("");
   const [error, allocateMemory] = useResources();
+  const setNewMachineState = useExecute();
 
   return (
     <div className="container">
@@ -17,9 +19,14 @@ const Editor = () => {
         value={code}
         onChange={(e) => setCode(e.target.value)}
       ></TextField>
-      <Button variant="contained" onClick={() => allocateMemory(code)}>
-        Compile
-      </Button>
+      <ButtonGroup>
+        <Button variant="contained" onClick={() => allocateMemory(code)}>
+          Compile
+        </Button>
+        <Button variant="contained" onClick={() => {setNewMachineState()}}>
+          Run
+        </Button>
+      </ButtonGroup>
       {error && <Alert severity="error">Compilation error: {error}</Alert>}
     </div>
   );
