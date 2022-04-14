@@ -2,8 +2,10 @@ import bitset from "../bitset";
 
 const regsiterReferenceInstructionFunction = (instruction, currentState) => {
   let one = bitset.hex2bin("0001");
+  currentState.registers["IR"] = instruction;
 
-  switch (instruction) {
+  const instruction_str = instruction.to_string();
+  switch (instruction_str) {
     case bitset.hex2bin("7800").to_string():
       currentState.registers["AC"].clear();
       break;
@@ -39,10 +41,8 @@ const regsiterReferenceInstructionFunction = (instruction, currentState) => {
       break;
     case bitset.hex2bin("7002").to_string():
       console.log("7002 code");
-      if (currentState.registers["E"].isZero()) {
+      if (currentState.registers["E"].isZero())
         currentState.registers["PC"].add(one);
-        console.log("isZero");
-      }
       break;
     case bitset.hex2bin("7001").to_string():
       currentState = null;

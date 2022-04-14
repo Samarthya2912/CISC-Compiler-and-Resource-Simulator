@@ -78,7 +78,6 @@ class bitset {
         for(let i = 0; i < this.size; i++) {
             if(this.bitarray[i] === 1) return false;
         }
-        console.log("returning true to iszero");
         return true;
     }
 

@@ -6,7 +6,7 @@ const getNewMachineState = (instruction, currentState) => {
 
   let newMachineState = { ...currentState, MEMORY: [...currentState.MEMORY] };
   newMachineState = regsiterReferenceInstructionFunction(
-    instruction.to_string(),
+    instruction,
     newMachineState
   );
   return newMachineState;
