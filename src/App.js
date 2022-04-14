@@ -5,6 +5,7 @@ import Memory from "./components/Memory";
 import Navbar from "./components/Navbar";
 import ResourceContextProvider, { resourceContext } from "./contexts/resources";
 import { useContext, useEffect } from "react";
+import Registers from "./components/Registers";
 
 function App() {
 
@@ -16,7 +17,8 @@ function App() {
         <div className="App">
           <Switch>
             <Route exact path="/">
-              <Editor />
+              {/* <Editor /> */}
+              <Registers />
             </Route>
             <Route exact path="/memory">
               <Memory />

@@ -2,16 +2,11 @@ import React, { useState } from "react";
 import { Alert, Button, TextField } from "@mui/material";
 import "./Editor.css";
 import useResources from "../hooks/useResources";
-import { resourceContext } from "../contexts/resources";
-import { useContext, useEffect } from "react";
 
 const Editor = () => {
   const [code, setCode] = useState("");
-  const [error,allocateMemory] = useResources();
-  const [resources] = useContext(resourceContext);
-  useEffect(() => {
-    console.log(resources.MEMORY);
-  }, [resources.MEMORY]);
+  const [error, allocateMemory] = useResources();
+
   return (
     <div className="container">
       <TextField
@@ -22,7 +17,9 @@ const Editor = () => {
         value={code}
         onChange={(e) => setCode(e.target.value)}
       ></TextField>
-      <Button onClick={() => allocateMemory(code)}>Compile</Button>
+      <Button variant="contained" onClick={() => allocateMemory(code)}>
+        Compile
+      </Button>
       {error && <Alert severity="error">Compilation error: {error}</Alert>}
     </div>
   );
