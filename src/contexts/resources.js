@@ -24,6 +24,7 @@ export default function ResourceContextProvider(props) {
       IR: new bitset(16),
       TR: new bitset(16),
       OUTR: new bitset(16),
+      E: new bitset(1)
     },
     MEMORY: memory_arr,
   });

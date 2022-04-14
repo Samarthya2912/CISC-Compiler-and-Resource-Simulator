@@ -14,8 +14,7 @@ import { Button } from "@mui/material";
 // }
 
 const Memory = () => {
-  const [resources,setResources] = useContext(resourceContext);
-
+  const [resources, setResources] = useContext(resourceContext);
 
   return (
     <>
@@ -23,7 +22,11 @@ const Memory = () => {
         {resources["MEMORY"].map((row, row_index) => (
           <div className="row" key={row_index}>
             {row.map((word, col_index) => (
-              <div key={col_index} className="word">
+              <div
+                key={col_index}
+                className="word"
+                style={{ backgroundColor: (resources.registers['PC'].to_decimal() === row_index*16+col_index)?"skyblue":"" }}
+              >
                 {word.to_string()}
               </div>
             ))}

@@ -32,6 +32,68 @@ class bitset {
             else this.bitarray[i] = 1;
         }
     }
+
+    clear() {
+        for(let i = 0; i < this.size; i++) {
+            this.bitarray[i] = 0;
+        }
+    }
+
+    complement() {
+        for(let i = 0; i < this.size; i++) {
+            this.bitarray[i] = 1-this.bitarray[i];
+        }
+    }
+
+    circulate_right() {
+        let last_bit = this.bitarray[this.size-1];
+        for(let i = this.size-1; i > 0; i--) {
+            this.bitarray[i] = this.bitarray[i-1];
+        }
+        this.bitarray[0] = last_bit;
+    }
+
+    circulate_left() {
+        let first_bit = this.bitarray[0];
+        for(let i = 0; i < this.size-1; i++) {
+            this.bitarray[i] = this.bitarray[i+1];
+        }
+        this.bitarray[this.size-1] = first_bit;
+    }
+
+    add(b) {
+        let carry = 0, sum = 0;
+        for(let i = this.size-1; i >= 0; i--) {
+            sum = carry+this.bitarray[i]+b.bitarray[i];
+            carry = Math.floor(sum/2);
+            this.bitarray[i] = sum%2;
+        }
+    }
+
+    isNegative() {
+        return this.bitarray[0] === 1;
+    }
+
+    isZero() {
+        for(let i = 0; i < this.size; i++) {
+            if(this.bitarray[i] === 1) return false;
+        }
+        console.log("returning true to iszero");
+        return true;
+    }
+
+    isPositive() {
+        return this.isZero() && (this.bitarray[0] === 0);
+    }
+
+    to_decimal() {
+        let val = 0, mul = 1;
+        for(let i = this.size-1; i >= 0; i--) {
+            val += mul*this.bitarray[i];
+            mul *= 2;
+        }
+        return val;
+    }
 };
 
 // let b = new bitset(16);

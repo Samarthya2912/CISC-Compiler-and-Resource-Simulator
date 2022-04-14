@@ -24,7 +24,7 @@ const Editor = () => {
           Compile
         </Button>
         <Button variant="contained" onClick={() => {setNewMachineState()}}>
-          Run
+          Run next instruction
         </Button>
       </ButtonGroup>
       {error && <Alert severity="error">Compilation error: {error}</Alert>}
