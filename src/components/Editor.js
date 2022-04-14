@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, TextField } from "@mui/material";
+import { Alert, Button, TextField } from "@mui/material";
 import "./Editor.css";
 import useResources from "../hooks/useResources";
 import { resourceContext } from "../contexts/resources";
@@ -7,7 +7,7 @@ import { useContext, useEffect } from "react";
 
 const Editor = () => {
   const [code, setCode] = useState("");
-  const allocateMemory = useResources();
+  const [error,allocateMemory] = useResources();
   const [resources] = useContext(resourceContext);
   useEffect(() => {
     console.log(resources.MEMORY);
@@ -23,6 +23,7 @@ const Editor = () => {
         onChange={(e) => setCode(e.target.value)}
       ></TextField>
       <Button onClick={() => allocateMemory(code)}>Compile</Button>
+      {error && <Alert severity="error">Compilation error: {error}</Alert>}
     </div>
   );
 };

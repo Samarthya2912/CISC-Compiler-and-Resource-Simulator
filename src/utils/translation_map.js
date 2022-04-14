@@ -3,13 +3,20 @@ import bitset from "../bitset";
 const mp = {};
 
 /* memory reference instructions */
-mp["AND"] = [bitset.hex2bin("0"),bitset.hex2bin("8")];
-mp["ADD"] = [bitset.hex2bin("1"),bitset.hex2bin("9")];
-mp["LDA"] = [bitset.hex2bin("2"),bitset.hex2bin("A")];
-mp["STA"] = [bitset.hex2bin("3"),bitset.hex2bin("B")];
-mp["BUN"] = [bitset.hex2bin("4"),bitset.hex2bin("C")];
-mp["BSA"] = [bitset.hex2bin("5"),bitset.hex2bin("D")];
-mp["ISZ"] = [bitset.hex2bin("6"),bitset.hex2bin("E")];
+mp["AND"] = bitset.hex2bin("0000");
+mp["ADD"] = bitset.hex2bin("1000");
+mp["LDA"] = bitset.hex2bin("2000");
+mp["STA"] = bitset.hex2bin("3000");
+mp["BUN"] = bitset.hex2bin("4000");
+mp["BSA"] = bitset.hex2bin("5000");
+mp["ISZ"] = bitset.hex2bin("6000");
+mp["AND*"] = bitset.hex2bin("8000");
+mp["ADD*"] = bitset.hex2bin("9000");
+mp["LDA*"] = bitset.hex2bin("A000");
+mp["STA*"] = bitset.hex2bin("B000");
+mp["BUN*"] = bitset.hex2bin("C000");
+mp["BSA*"] = bitset.hex2bin("D000");
+mp["ISZ*"] = bitset.hex2bin("E000");
 
 /* register reference instructions */
 mp["CLA"] = bitset.hex2bin("7800");
