@@ -7,8 +7,8 @@ const Registers = () => {
   console.log(Object.keys(registers));
 
   return (
-    <Paper>
-      <h1>Register</h1>
+    <Paper style={{minWidth: "400px"}}>
+      <h1>Registers</h1>
       <div>
         {Object.keys(registers).map((register) => (
           <Typography key={register}>
