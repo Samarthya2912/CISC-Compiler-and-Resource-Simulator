@@ -93,6 +93,20 @@ class bitset {
         }
         return val;
     }
+
+    and(b) {
+        for(let i = 0; i < this.size; i++) {
+            if(this.bitarray[i] === 1 && b.bitarray[i] === 1) this.bitarray[i] = 1;
+            else this.bitarray[i] = 1;
+        }
+    }
+
+    or(b) {
+        for(let i = 0; i < this.size; i++) {
+            if(this.bitarray[i] === 1 || b.bitarray[i] === 1) this.bitarray[i] = 1;
+            else this.bitarray[i] = 0;
+        }
+    }
 };
 
 // let b = new bitset(16);
