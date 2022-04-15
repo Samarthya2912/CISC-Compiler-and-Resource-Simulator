@@ -1,12 +1,52 @@
+/* eslint-disable default-case */
+/* eslint-disable no-unused-vars */
 import bitset from "../bitset";
 
 const memoryReferenceInstructionFunction = (instruction, currentState) => {
-  const one = bitset.hex2bin("0001");
   currentState.registers["IR"] = instruction;
+  currentState.registers["AR"] = instruction.subbitset(5, instruction.size - 5);
 
-  switch(instruction.to_string()) {}
+  let addressIndex = 0,
+    i = 0,
+    j = 0;
 
-  currentState.registers["PC"].add(one);
+  let opcode = instruction.to_string().substr(0, 4);
+
+  switch (opcode) {
+    case bitset.hex2bin("0").to_string():
+      addressIndex = currentState.registers["AR"].to_decimal();
+      [i, j] = [Math.floor(addressIndex / 8), addressIndex % 8];
+      currentState.registers["DR"] = currentState["MEMORY"][i][j];
+      currentState.registers["AC"].and(currentState.registers["DR"]);
+      break;
+
+    case bitset.hex2bin("1").to_string():
+      addressIndex = currentState.registers["AR"].to_decimal();
+      [i, j] = [Math.floor(addressIndex / 8), addressIndex % 8];
+      currentState.registers["DR"] = currentState["MEMORY"][i][j];
+      currentState.registers["AC"].add(currentState.registers["DR"]);
+      break;
+
+    case bitset.hex2bin("2").to_string():
+      addressIndex = currentState.registers["AR"].to_decimal();
+      [i, j] = [Math.floor(addressIndex / 8), addressIndex % 8];
+      currentState.registers["DR"] = currentState["MEMORY"][i][j];
+      currentState.registers["AC"] = currentState.registers["DR"];
+      break;
+
+    case bitset.hex2bin("3").to_string():
+      addressIndex = currentState.registers["AR"].to_decimal();
+      [i, j] = [Math.floor(addressIndex / 8), addressIndex % 8];
+      currentState.registers["DR"] = currentState.registers["AC"];
+      currentState["MEMORY"][i][j] = currentState.registers["DR"];
+      break;
+
+    default:
+      console.log("default");
+      break;
+  }
+
+  currentState.registers["PC"].add(bitset.hex2bin("001"));
   return currentState;
 };
 

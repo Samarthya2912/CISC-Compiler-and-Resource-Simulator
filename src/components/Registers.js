@@ -4,7 +4,6 @@ import { resourceContext } from "../contexts/resources";
 
 const Registers = () => {
   const [{ registers }] = useContext(resourceContext);
-  console.log(Object.keys(registers));
 
   return (
     <Paper style={{minWidth: "400px"}}>

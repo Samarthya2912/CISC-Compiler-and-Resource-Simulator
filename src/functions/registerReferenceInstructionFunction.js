@@ -29,20 +29,19 @@ const regsiterReferenceInstructionFunction = (instruction, currentState) => {
       break;
     case bitset.hex2bin("7010").to_string():
       if (currentState.registers["AC"].isPositive())
-        currentState.registers["PC"].add(one);
+        currentState.registers["PC"].add(bitset.hex2bin("001"));
       break;
     case bitset.hex2bin("7008").to_string():
       if (currentState.registers["AC"].isNegative())
-        currentState.registers["PC"].add(one);
+        currentState.registers["PC"].add(bitset.hex2bin("001"));
       break;
     case bitset.hex2bin("7004").to_string():
       if (currentState.registers["AC"].isZero())
-        currentState.registers["PC"].add(one);
+        currentState.registers["PC"].add(bitset.hex2bin("001"));
       break;
     case bitset.hex2bin("7002").to_string():
-      console.log("7002 code");
       if (currentState.registers["E"].isZero())
-        currentState.registers["PC"].add(one);
+        currentState.registers["PC"].add(bitset.hex2bin("001"));
       break;
     case bitset.hex2bin("7001").to_string():
       currentState = null;
@@ -50,8 +49,23 @@ const regsiterReferenceInstructionFunction = (instruction, currentState) => {
     default:
       break;
   }
-  currentState.registers["PC"].add(one);
+  currentState.registers["PC"].add(bitset.hex2bin("001"));
   return currentState;
 };
+
+/*
+mp["CLA"] = bitset.hex2bin("7800");
+mp["CLE"] = bitset.hex2bin("7400");
+mp["CMA"] = bitset.hex2bin("7200");
+mp["CME"] = bitset.hex2bin("7100");
+mp["CIR"] = bitset.hex2bin("7080");
+mp["CIL"] = bitset.hex2bin("7040");
+mp["INC"] = bitset.hex2bin("7020");
+mp["SPA"] = bitset.hex2bin("7010");
+mp["SNA"] = bitset.hex2bin("7008");
+mp["SZA"] = bitset.hex2bin("7004");
+mp["SZE"] = bitset.hex2bin("7002");
+mp["HLT"] = bitset.hex2bin("7001");
+ */
 
 export default regsiterReferenceInstructionFunction;

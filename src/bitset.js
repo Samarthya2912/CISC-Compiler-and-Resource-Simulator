@@ -1,12 +1,15 @@
 class bitset {
     constructor(size) {
         this.size = size;
-        this.bitarray = Array(size).fill(0);
+        this.bitarray = [];
+        for(let i = 0; i < this.size; i++) {
+            this.bitarray.push(0);
+        }
     }
 
     to_string() {
         let str = "";
-        this.bitarray.forEach((bit,index) => str += bit+(index%4 === 3?" ":""));
+        this.bitarray.forEach((bit,index) => str += bit+(index%4 === 3 && index !== this.size-1?" ":""));
         return str;
     }
 
@@ -82,7 +85,7 @@ class bitset {
     }
 
     isPositive() {
-        return this.isZero() && (this.bitarray[0] === 0);
+        return !this.isZero() && (this.bitarray[0] === 0);
     }
 
     to_decimal() {
@@ -97,7 +100,7 @@ class bitset {
     and(b) {
         for(let i = 0; i < this.size; i++) {
             if(this.bitarray[i] === 1 && b.bitarray[i] === 1) this.bitarray[i] = 1;
-            else this.bitarray[i] = 1;
+            else this.bitarray[i] = 0;
         }
     }
 
@@ -107,11 +110,19 @@ class bitset {
             else this.bitarray[i] = 0;
         }
     }
-};
 
-// let b = new bitset(16);
-// b.hex2bin("A7800");
-// b = bitset.hex2bin("7800");
-// console.log(b.to_string());
+    append(b) {
+        this.size += b.size;
+        this.bitarray = [...this.bitarray,...b.bitarray];
+    }
+
+    subbitset(i,j) {
+        let newbitset = new bitset(j);
+        for(let k = 0; k < j; k++) {
+            newbitset.bitarray[k] = this.bitarray[k+i];
+        }
+        return newbitset;
+    }
+};
 
 export default bitset;

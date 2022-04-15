@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import bitset from "../bitset";
 import { resourceContext } from "../contexts/resources";
 import mp from "../utils/translation_map";
 
@@ -7,28 +8,39 @@ export default function useResources() {
   const [error, setError] = useState(null);
 
   const allocateMemory = (code) => {
-    console.log(code);
     const lines = code.split(";");
     const instructions = lines.map((line) => line.replace(/\s+/g, " ").trim());
-    const machine_code = instructions.map((instruction) => {
-      if (mp[instruction] === undefined || mp[instruction] === null) {
-        setError(`"${instruction}" not recognized.`);
+    const machine_code = instructions.map((instruction_line) => {
+      let [instruction, arg] = instruction_line.split(" ");
+      let translated_code = mp[instruction];
+
+      // if (
+      //   mp[instruction] === undefined ||
+      //   mp[instruction] === null ||
+      //   (translated_code.size === 4 && (arg !== undefined && arg.length !== 3)) ||
+      //   (translated_code.size === 16 && (arg !== undefined && arg.length !== 0))
+      // ) {
+      //   setError(`"${instruction}" not recognized.`);
+      // }
+
+      if (translated_code.size === 4) {
+        translated_code.append(bitset.hex2bin(arg));
       }
-      return mp[instruction];
+
+      return translated_code;
     });
 
     const rows = 16;
     const cols = 8;
+
     let updatedMemoryArr = [];
     for (let i = 0; i < rows; i++) {
       updatedMemoryArr.push([]);
       for (let j = 0; j < cols; j++) {
-        console.log(resources.MEMORY[i][j].to_string());
         updatedMemoryArr[i].push(resources.MEMORY[i][j]);
       }
     }
 
-    console.log({ updatedMemoryArr });
     for (let index = 0; index < machine_code.length; index++) {
       let [i, j] = [Math.floor(index / cols), index % cols];
       updatedMemoryArr[i][j] = machine_code[index];

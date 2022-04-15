@@ -16,8 +16,8 @@ export default function ResourceContextProvider(props) {
 
   const [resources, setResources] = useState({
     registers: {
-      AR: new bitset(16),
-      PC: new bitset(16),
+      AR: new bitset(12),
+      PC: new bitset(12),
       DR: new bitset(16),
       AC: new bitset(16),
       INPR: new bitset(16),
