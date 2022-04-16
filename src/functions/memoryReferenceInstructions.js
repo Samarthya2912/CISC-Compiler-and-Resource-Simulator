@@ -4,7 +4,7 @@ import bitset from "../bitset";
 
 const memoryReferenceInstructionFunction = (instruction, currentState) => {
   currentState.registers["IR"] = instruction;
-  currentState.registers["AR"] = instruction.subbitset(5, instruction.size - 5);
+  currentState.registers["AR"] = instruction.subbitset(4, instruction.size - 4);
 
   let addressIndex = 0,
     i = 0,
@@ -41,12 +41,17 @@ const memoryReferenceInstructionFunction = (instruction, currentState) => {
       currentState["MEMORY"][i][j] = currentState.registers["DR"];
       break;
 
+    case bitset.hex2bin("4").to_string():
+      console.log(currentState);
+      currentState.registers["PC"] = currentState.registers["AR"];
+      break;
+
     default:
       console.log("default");
       break;
   }
 
-  currentState.registers["PC"].add(bitset.hex2bin("001"));
+  if(opcode !== bitset.hex2bin("4").to_string()) currentState.registers["PC"].add(bitset.hex2bin("001"));
   return currentState;
 };
 

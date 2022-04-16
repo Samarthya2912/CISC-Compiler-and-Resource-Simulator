@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import bitset from "../bitset";
 import { resourceContext } from "../contexts/resources";
 import mp from "../utils/translation_map";
@@ -6,6 +6,10 @@ import mp from "../utils/translation_map";
 export default function useResources() {
   const [resources, setResources] = useContext(resourceContext);
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    console.log(resources);
+  }, [resources]);
 
   const allocateMemory = (code) => {
     const lines = code.split(";");
