@@ -15,7 +15,6 @@ let memoryReferenceInstructionFunction = (instruction,currentState) => {
     let [i,j] = wordIndex(addressIndex);
     currentState.registers["AR"].copy(currentState.MEMORY[i][j].subbitset(4,12));
     opcode = "0"+opcode.substr(1,3);
-    console.log({newopcode: opcode});
   }
 
   if(opcode === "0000" || opcode === "0001") {
@@ -37,9 +36,8 @@ let memoryReferenceInstructionFunction = (instruction,currentState) => {
     currentState.MEMORY[i][j].copy(currentState.registers["AC"]);
   }
   else if(opcode === "0100") {
-    let addressIndex = currentState.registers["AR"].to_decimal();
-    let [i,j] = wordIndex(addressIndex);
-    currentState.registers["PC"].copy(currentState.registers["AC"]);
+    currentState.registers["AR"].to_decimal();
+    currentState.registers["PC"].copy(currentState.registers["AR"]);
   }
   else if(opcode === "0101") {
     /* for phase 2 */

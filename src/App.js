@@ -25,10 +25,11 @@ function App() {
                 >
                   <Editor />
                   <Registers />
+                  <Memory />
                 </div>
               </Route>
               <Route exact path="/memory">
-                <Memory />
+                {/* <Memory /> */}
               </Route>
               <h1>404 INVALID ROUTE</h1>
             </Switch>
