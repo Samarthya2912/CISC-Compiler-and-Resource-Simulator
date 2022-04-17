@@ -15,34 +15,22 @@ const useExecute = () => {
   };
 
   const resetMachine = () => {
-    const rows = 16;
-    const cols = 8;
-    const memory_arr = [];
-    for (let i = 0; i < rows; i++) {
-      memory_arr.push([]);
-      for (let j = 0; j < cols; j++) {
-        memory_arr[i].push(new bitset(16));
+    let newMachineState = { ...resources, MEMORY: [...resources.MEMORY] };
+
+    for (let register in resources.registers) {
+      newMachineState.registers[register].clear();
+    }
+
+    for (let i = 0; i < 16; i++) {
+      for (let j = 0; j < 8; j++) {
+        newMachineState.MEMORY[i][j].clear();
       }
     }
 
-    const initialState = {
-      registers: {
-        AR: new bitset(12),
-        PC: new bitset(12),
-        DR: new bitset(16),
-        AC: new bitset(16),
-        INPR: new bitset(16),
-        IR: new bitset(16),
-        TR: new bitset(16),
-        OUTR: new bitset(16),
-        E: new bitset(1),
-      },
-      MEMORY: memory_arr,
-    };
-    setResources(initialState);
+    setResources(newMachineState);
   };
 
-  return [setNewMachineState,resetMachine];
+  return [setNewMachineState, resetMachine];
 };
 
 export default useExecute;
