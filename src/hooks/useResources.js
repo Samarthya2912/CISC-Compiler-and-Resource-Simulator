@@ -16,7 +16,8 @@ export default function useResources() {
     const instructions = lines.map((line) => line.replace(/\s+/g, " ").trim());
     const machine_code = instructions.map((instruction_line) => {
       let [instruction, arg] = instruction_line.split(" ");
-      let translated_code = mp[instruction];
+      let translated_code = new bitset(0);
+      translated_code.copy(mp[instruction]);
 
       // if (
       //   mp[instruction] === undefined ||
@@ -47,7 +48,7 @@ export default function useResources() {
 
     for (let index = 0; index < machine_code.length; index++) {
       let [i, j] = [Math.floor(index / cols), index % cols];
-      updatedMemoryArr[i][j] = machine_code[index];
+      updatedMemoryArr[i][j].copy(machine_code[index]);
     }
 
     if (!error) setResources({ ...resources, MEMORY: updatedMemoryArr });

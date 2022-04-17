@@ -25,7 +25,7 @@ const Memory = () => {
               <div
                 key={col_index}
                 className="word"
-                style={{ backgroundColor: (resources.registers['PC'].to_decimal() === row_index*16+col_index)?"skyblue":"" }}
+                style={{ backgroundColor: (resources.registers['PC'].to_decimal() === row_index*8+col_index)?"skyblue":"" }}
               >
                 {word.to_string()}
               </div>
