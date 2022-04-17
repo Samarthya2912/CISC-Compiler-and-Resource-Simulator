@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Alert, Button, ButtonGroup, TextField } from "@mui/material";
 import "./Editor.css";
 import useResources from "../hooks/useResources";
 import useExecute from "../hooks/useExecute";
+import { codeContext } from "../contexts/code";
 
 const Editor = () => {
-  const [code, setCode] = useState("");
+  const [code, setCode] = useContext(codeContext);
   const [error, allocateMemory] = useResources();
   const setNewMachineState = useExecute();
 

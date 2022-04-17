@@ -123,6 +123,11 @@ class bitset {
         }
         return newbitset;
     }
+
+    copy(b) {
+        this.size = b.size;
+        this.bitarray = [...b.bitarray];
+    }
 };
 
 export default bitset;

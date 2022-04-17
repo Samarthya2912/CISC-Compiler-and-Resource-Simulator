@@ -5,11 +5,13 @@ import Memory from "./components/Memory";
 import Navbar from "./components/Navbar";
 import ResourceContextProvider from "./contexts/resources";
 import Registers from "./components/Registers";
+import CodeContextProvider from "./contexts/code";
 
 function App() {
   return (
     <Router>
       <ResourceContextProvider>
+        <CodeContextProvider>
         <Navbar />
         <div className="App">
           <Switch>
@@ -31,6 +33,7 @@ function App() {
             <h1>404 INVALID ROUTE</h1>
           </Switch>
         </div>
+        </CodeContextProvider>
       </ResourceContextProvider>
     </Router>
   );
