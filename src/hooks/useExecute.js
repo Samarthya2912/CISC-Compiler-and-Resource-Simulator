@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { resourceContext } from "../contexts/resources";
-import getNewMachineState from "../functions/newMachineState";
+import getNewMachineState from "../functions/getNewMachineState";
 import bitset from "../bitset";
 
 const useExecute = () => {

@@ -1,5 +1,5 @@
 import bitset from "../bitset";
-import memoryReferenceInstructionFunction from "./memoryReferenceInstructions";
+import memoryReferenceInstructionFunction from "./memoryReferenceInstructionFunction";
 import regsiterReferenceInstructionFunction from "./registerReferenceInstructionFunction";
 
 const getNewMachineState = (instruction, currentState) => {

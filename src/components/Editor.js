@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Alert, Button, ButtonGroup, TextField } from "@mui/material";
 import "./Editor.css";
-import useResources from "../hooks/useResources";
+import useResources from "../hooks/useCompile";
 import useExecute from "../hooks/useExecute";
 import { codeContext } from "../contexts/code";
 
