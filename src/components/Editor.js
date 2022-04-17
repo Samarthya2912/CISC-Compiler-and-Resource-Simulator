@@ -8,7 +8,7 @@ import { codeContext } from "../contexts/code";
 const Editor = () => {
   const [code, setCode] = useContext(codeContext);
   const [error, allocateMemory] = useResources();
-  const setNewMachineState = useExecute();
+  const [setNewMachineState, resetMachine] = useExecute();
 
   return (
     <div className="container">
@@ -24,8 +24,16 @@ const Editor = () => {
         <Button variant="contained" onClick={() => allocateMemory(code)}>
           Compile
         </Button>
-        <Button variant="contained" onClick={() => {setNewMachineState()}}>
+        <Button
+          variant="contained"
+          onClick={() => {
+            setNewMachineState();
+          }}
+        >
           Run next instruction
+        </Button>
+        <Button variant="outlined" onClick={resetMachine}>
+          RESET COMPUTER
         </Button>
       </ButtonGroup>
       {error && <Alert severity="error">Compilation error: {error}</Alert>}
