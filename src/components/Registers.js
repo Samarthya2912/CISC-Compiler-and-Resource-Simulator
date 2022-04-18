@@ -1,6 +1,7 @@
 import { Paper, Typography } from "@mui/material";
 import React, { useContext } from "react";
 import { resourceContext } from "../contexts/resources";
+import IOTerminal from "./IOTerminal";
 
 const Registers = () => {
   const [{ registers }] = useContext(resourceContext);
@@ -15,6 +16,7 @@ const Registers = () => {
           </Typography>
         ))}
       </div>
+      <IOTerminal />
     </Paper>
   );
 };

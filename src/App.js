@@ -6,34 +6,37 @@ import Navbar from "./components/Navbar";
 import ResourceContextProvider from "./contexts/resources";
 import Registers from "./components/Registers";
 import CodeContextProvider from "./contexts/code";
+import InputOutputContextProvider from "./contexts/inputoutput";
 
 function App() {
   return (
     <Router>
       <ResourceContextProvider>
         <CodeContextProvider>
-          <Navbar />
-          <div className="App">
-            <Switch>
-              <Route exact path="/">
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-evenly",
-                    width: "100%",
-                  }}
-                >
-                  <Editor />
-                  <Registers />
-                  <Memory />
-                </div>
-              </Route>
-              <Route exact path="/memory">
-                {/* <Memory /> */}
-              </Route>
-              <h1>404 INVALID ROUTE</h1>
-            </Switch>
-          </div>
+          <InputOutputContextProvider>
+            <Navbar />
+            <div className="App">
+              <Switch>
+                <Route exact path="/">
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-evenly",
+                      width: "100%",
+                    }}
+                  >
+                    <Editor />
+                    <Registers />
+                    <Memory />
+                  </div>
+                </Route>
+                <Route exact path="/memory">
+                  {/* <Memory /> */}
+                </Route>
+                <h1>404 INVALID ROUTE</h1>
+              </Switch>
+            </div>
+          </InputOutputContextProvider>
         </CodeContextProvider>
       </ResourceContextProvider>
     </Router>

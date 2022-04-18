@@ -13,9 +13,10 @@ class bitset {
         return str;
     }
 
-    set(index, val = 1) {
-        if(index < 0 || index >= this.size) throw new Error("Out of range error");
-        this.bitarray[this.size-1-index] = val; 
+    set() {
+        for(let i = 0; i < this.size; i++) {
+            this.bitarray[i] = 1;
+        }
     }
 
     static hex2bin(hex) {
