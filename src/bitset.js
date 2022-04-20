@@ -37,6 +37,10 @@ class bitset {
         }
     }
 
+    to_hex() {
+        return parseInt(this.to_decimal(), 2).toString(16).toUpperCase();
+    }
+
     clear() {
         for(let i = 0; i < this.size; i++) {
             this.bitarray[i] = 0;
@@ -72,6 +76,11 @@ class bitset {
             carry = Math.floor(sum/2);
             this.bitarray[i] = sum%2;
         }
+    }
+
+    to_bool() {
+        if(this.size !== 1) throw new Error("Unexpected call().");
+        return this.bitarray[0] === 1;
     }
 
     isNegative() {

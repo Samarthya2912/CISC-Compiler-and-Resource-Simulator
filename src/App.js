@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 import ResourceContextProvider from "./contexts/resources";
 import Registers from "./components/Registers";
 import CodeContextProvider from "./contexts/code";
-import InputOutputContextProvider from "./contexts/inputoutput";
+import InputOutputContextProvider from "./contexts/io-interface-context";
 
 function App() {
   return (

@@ -1,18 +1,14 @@
 import React, { useContext } from "react";
-import { TextField } from "@mui/material";
-import { inputOutputContext } from "../contexts/inputoutput";
+import { Button, TextField } from "@mui/material";
+import { iointerfacecontext } from "../contexts/io-interface-context";
 import { resourceContext } from "../contexts/resources";
+import useIO from "../hooks/useIO";
 
 const IOTerminal = () => {
-  const [io, setIo] = useContext(inputOutputContext);
-  const [resources, setResources] = useContext(resourceContext)
-
-  const inputChangeHandler = () => {
-      let newresources = {...resources };
-      newresources.registers["FGI"].set()
-  };
-
-  const outputChangeHandler = () => {};
+  const [iointerfacestate, setIOinterfacestate] =
+    useContext(iointerfacecontext);
+  const [resources, setResources] = useContext(resourceContext);
+  const [inputChangeHandler, getInput] = useIO();
 
   return (
     <>
@@ -20,16 +16,17 @@ const IOTerminal = () => {
         id="outlined-basic"
         label="Input"
         variant="outlined"
-        value={io.input}
+        value={iointerfacestate.inp}
         onChange={inputChangeHandler}
+        disabled={false}
       />
       <hr />
       <TextField
         id="outlined-basic"
         label="Output"
         variant="outlined"
-        value={io.output}
-        onChange={outputChangeHandler}
+        value={iointerfacestate.out}
+        // onChange={outputChangeHandler}
       />
     </>
   );

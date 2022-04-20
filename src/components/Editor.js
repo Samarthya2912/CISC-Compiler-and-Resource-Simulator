@@ -30,7 +30,7 @@ const Editor = () => {
             setNewMachineState();
           }}
         >
-          Run next instruction
+          Next Instruction
         </Button>
         <Button variant="outlined" onClick={resetMachine}>
           RESET COMPUTER
