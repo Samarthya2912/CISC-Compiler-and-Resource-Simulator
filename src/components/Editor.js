@@ -19,24 +19,7 @@ const Editor = () => {
         style={{ minWidth: "400px" }}
         value={code}
         onChange={(e) => setCode(e.target.value)}
-      ></TextField>
-      <ButtonGroup>
-        <Button variant="contained" onClick={() => allocateMemory(code)}>
-          Compile
-        </Button>
-        <Button
-          variant="contained"
-          onClick={() => {
-            setNewMachineState();
-          }}
-        >
-          Next Instruction
-        </Button>
-        <Button variant="outlined" onClick={resetMachine}>
-          RESET COMPUTER
-        </Button>
-      </ButtonGroup>
-      {error && <Alert severity="error">Compilation error: {error}</Alert>}
+      ></TextField>    
     </div>
   );
 };
