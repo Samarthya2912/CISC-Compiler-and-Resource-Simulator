@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
-import { Button, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import { iointerfacecontext } from "../contexts/io-interface-context";
 import { resourceContext } from "../contexts/resources";
 import useIO from "../hooks/useIO";
 import CustomHeader from "./CustomHeader";
 
 const IOTerminal = () => {
-  const [iointerfacestate, setIOinterfacestate] =
+  const [iointerfacestate] =
     useContext(iointerfacecontext);
-  const [resources, setResources] = useContext(resourceContext);
-  const [inputChangeHandler, getInput] = useIO();
+  const [resources] = useContext(resourceContext);
+  const [inputChangeHandler] = useIO();
 
   return (
     <div style={{ margin: "20px 0" }}>

@@ -1,7 +1,6 @@
 import { Paper, Typography } from "@mui/material";
 import React, { useContext } from "react";
 import { resourceContext } from "../contexts/resources";
-import ActionButtons from "./ActionButtons";
 import CustomHeader from "./CustomHeader";
 import IOTerminal from "./IOTerminal";
 
@@ -11,7 +10,6 @@ const Registers = () => {
   return (
     <>
       <Paper elevation={0} sx={{ margin: "20px 0" }}>
-        {/* <h1>Registers</h1> */}
         <CustomHeader>Registers</CustomHeader>
         <div style={{ display: "flex" }}>
           <div style={{ display: "flex", flexDirection: "column" }}>

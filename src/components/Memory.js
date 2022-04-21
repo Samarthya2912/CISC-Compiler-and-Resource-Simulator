@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import "./Memory.css";
-import bitset from "../bitset";
 import { resourceContext } from "../contexts/resources";
-import { Button } from "@mui/material";
 import CustomHeader from "./CustomHeader";
 
 const Memory = () => {
