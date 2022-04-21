@@ -1,21 +1,18 @@
 import { useContext, useState } from "react";
 import { resourceContext } from "../contexts/resources";
 import getNewMachineState from "../functions/getNewMachineState";
-import bitset from "../bitset";
 import useIO from "./useIO";
+import { iointerfacecontext } from "../contexts/io-interface-context";
 
 const useExecute = () => {
   const [resources, setResources] = useContext(resourceContext);
-  const [,getInput,getOutput] = useIO();
+  const [, setIOinterfacestate] = useContext(iointerfacecontext);
+  const [, getInput, getOutput] = useIO();
 
   const setNewMachineState = () => {
-    if(resources.registers["INTERRUPT"].to_bool() && resources.registers["FGI"].to_bool()) { 
-      getInput();
-      return;
-    }
-
-    if(resources.registers["INTERRUPT"].to_bool() && resources.registers["FGO"].to_bool()) { 
-      getOutput();
+    if (resources.registers["INTERRUPT"].to_bool()) {
+      if (resources.registers["FGI"].to_bool()) getInput();
+      if (resources.registers["FGO"].to_bool()) getOutput();
       return;
     }
 
@@ -40,6 +37,7 @@ const useExecute = () => {
     }
 
     setResources(newMachineState);
+    setIOinterfacestate({ inp: "", out: "" });
   };
 
   return [setNewMachineState, resetMachine];

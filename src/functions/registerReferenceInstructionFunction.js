@@ -45,7 +45,7 @@ const regsiterReferenceInstructionFunction = (instruction, currentState) => {
       break;
     case bitset.hex2bin("7001").to_string():
       currentState = null;
-      break;
+      return currentState;
     default:
       break;
   }

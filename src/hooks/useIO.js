@@ -40,8 +40,7 @@ export default function useIO() {
     const getOutput = () => {
         let newiostate = {...iointerfacestate};
         let newresourcesstate = {...resources, MEMORY: [...resources.MEMORY]};
-        newresourcesstate.registers["OUTR"].copy(newresourcesstate.registers["AC"].to_hex());
-        newresourcesstate.registers["AC"].clear();
+        newiostate.out = newresourcesstate.registers["OUTR"].to_decimal();
         newresourcesstate.registers["FGO"].clear();
         newresourcesstate.registers["INTERRUPT"].clear();
 
