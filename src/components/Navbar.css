@@ -1,8 +1,8 @@
 .navbar {
-    border: solid 1px black;
+    background-color: #4D4DFF;
     display: flex;
-}
-
-.navbar * {
-    padding: 5px;
+    align-items: center;
+    font-size: large;
+    padding: 0 20px;
+    /* margin-right: 50px; */
 }

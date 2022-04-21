@@ -8,7 +8,7 @@ const Memory = () => {
 
   return (
     <>
-      <div className="memory" style={{ margin: "20px 0" }}>
+      <div className="memory" style={{ margin: "60px 0" }}>
         <CustomHeader>Memory</CustomHeader>
         {resources["MEMORY"].map((row, row_index) => (
           <div className="row" key={row_index}>
