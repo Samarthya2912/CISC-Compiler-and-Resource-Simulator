@@ -32,7 +32,7 @@ export default function useIO() {
         newresourcesstate.registers["INPR"].copy(bitset.hex2bin(newiostate.inp));
         newresourcesstate.registers["FGI"].clear();
         newresourcesstate.registers["INTERRUPT"].clear();
-        newiostate.io = "";
+        newiostate.inp = "";
         setResources(newresourcesstate);
         setIOinterfacestate(newiostate);
     }
