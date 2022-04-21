@@ -19,6 +19,11 @@ const IOTerminal = () => {
         value={iointerfacestate.inp}
         onChange={inputChangeHandler}
         disabled={false}
+        focused={resources.registers["INTERRUPT"].to_bool() && !resources.registers["FGO"].to_bool()}
+        sx={{ textTransform: 'capitalize' }}
+        inputProps={{
+          autoComplete: "off"
+        }}
       />
       <hr />
       <TextField
@@ -26,7 +31,9 @@ const IOTerminal = () => {
         label="Output"
         variant="outlined"
         value={iointerfacestate.out}
-        // onChange={outputChangeHandler}
+        inputProps={{
+          autoComplete: "off"
+        }}
       />
     </>
   );
