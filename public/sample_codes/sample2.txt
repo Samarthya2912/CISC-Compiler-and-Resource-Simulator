@@ -1,0 +1,12 @@
+// input a, input b, output a+b;
+
+ION;
+INP;
+STA 011;
+CLA;
+ION;
+INP;
+ADD 011;
+OUT;
+ION;
+HLT;
