@@ -15,28 +15,27 @@ function App() {
       <ResourceContextProvider>
         <CodeContextProvider>
           <InputOutputContextProvider>
-          <EditorContextProvider>
-            <Navbar />
-            <div className="App">
-              <Switch>
-                <Route exact path="/">
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-evenly",
-                      width: "100%",
-                    }}
-                  >
-                    <Editor />
-                  </div>
-                </Route>
-                <Route exact path="/memory">
-                  <Registers />
-                  <Memory />
-                </Route>
-                <h1>404 INVALID ROUTE</h1>
-              </Switch>
-            </div>
+            <EditorContextProvider>
+              <Navbar />
+              <div className="App">
+                <Switch>
+                  <Route exact path="/">
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                        width: "100%",
+                      }}
+                    >
+                      <Editor />
+                      <Registers />
+                      <Memory />
+                    </div>
+                  </Route>
+                  <Route exact path="/memory"></Route>
+                  <h1>404 INVALID ROUTE</h1>
+                </Switch>
+              </div>
             </EditorContextProvider>
           </InputOutputContextProvider>
         </CodeContextProvider>

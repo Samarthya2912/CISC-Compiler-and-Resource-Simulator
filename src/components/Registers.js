@@ -9,7 +9,7 @@ const Registers = () => {
 
   return (
     <>
-      <Paper style={{ minWidth: "400px" }}>
+      <Paper style={{ minWidth: "300px" }} elevation={0}>
         <h1>Registers</h1>
         <div>
           {Object.keys(registers).map((register) => (
@@ -19,7 +19,7 @@ const Registers = () => {
           ))}
         </div>
         <IOTerminal />
-      <ActionButtons />
+      {/* <ActionButtons /> */}
       </Paper>
     </>
   );

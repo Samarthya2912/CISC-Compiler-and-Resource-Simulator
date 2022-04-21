@@ -12,24 +12,22 @@ const ActionButtons = () => {
 
   return (
     <>
-      <ButtonGroup>
-        <ButtonGroup>
-          <Button variant="contained" onClick={() => allocateMemory(code)}>
-            Compile
-          </Button>
-          <Button
-            variant="contained"
-            onClick={() => {
-              setNewMachineState();
-            }}
-          >
-            Next Instruction
-          </Button>
-          <Button variant="outlined" onClick={resetMachine}>
-            RESET COMPUTER
-          </Button>
-          <OpenEditorButton />
-        </ButtonGroup>
+      <ButtonGroup sx={{ margin: "15px" }}>
+        <OpenEditorButton />
+        <Button variant="text" onClick={() => allocateMemory(code)}>
+          COMPILE
+        </Button>
+        <Button
+          variant="text"
+          onClick={() => {
+            setNewMachineState();
+          }}
+        >
+          NEXT INSTRUCTION
+        </Button>
+        <Button variant="text" onClick={resetMachine}>
+          RESET
+        </Button>
       </ButtonGroup>
       {error && <Alert severity="error">Compilation error: {error}</Alert>}
     </>

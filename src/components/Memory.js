@@ -19,13 +19,14 @@ const Memory = () => {
   return (
     <>
       <div className="memory">
+        <h1>Memory</h1>
         {resources["MEMORY"].map((row, row_index) => (
           <div className="row" key={row_index}>
             {row.map((word, col_index) => (
               <div
                 key={col_index}
                 className="word"
-                style={{ backgroundColor: (resources.registers['PC'].to_decimal() === row_index*8+col_index)?"skyblue":"" }}
+                style={{ backgroundColor: (resources.registers['PC'].to_decimal() === row_index*8+col_index)?"skyblue":"", fontSize: "small" }}
               >
                 {word.to_string()}
               </div>
