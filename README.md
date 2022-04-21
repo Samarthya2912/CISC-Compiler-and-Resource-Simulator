@@ -17,7 +17,7 @@ Standard input procedure
     STA 010;
     HLT;`
 
-Standard input procedure
+Standard output procedure
 
  - Populate **OUTR** from **AC** using **OUT** instruction setting **FGO** to one.
  - Trigger **ION** and output data to interface to **OUTR**
