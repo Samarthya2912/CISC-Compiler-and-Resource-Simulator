@@ -2,6 +2,7 @@ import { Paper, Typography } from "@mui/material";
 import React, { useContext } from "react";
 import { resourceContext } from "../contexts/resources";
 import ActionButtons from "./ActionButtons";
+import CustomHeader from "./CustomHeader";
 import IOTerminal from "./IOTerminal";
 
 const Registers = () => {
@@ -9,17 +10,42 @@ const Registers = () => {
 
   return (
     <>
-      <Paper style={{ minWidth: "300px" }} elevation={0}>
-        <h1>Registers</h1>
-        <div>
-          {Object.keys(registers).map((register) => (
-            <Typography key={register}>
-              {register}: {registers[register].to_string()}
-            </Typography>
-          ))}
+      <Paper elevation={0} sx={{ margin: "20px 0" }}>
+        {/* <h1>Registers</h1> */}
+        <CustomHeader>Registers</CustomHeader>
+        <div style={{ display: "flex" }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {Object.keys(registers).map((register) => (
+              <Typography
+                sx={{
+                  border: "solid black 1px",
+                  minWidth: "100px",
+                  padding: "0 10px",
+                  boxSizing: "border-box",
+                }}
+                key={register}
+              >
+                {register}
+              </Typography>
+            ))}
+          </div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {Object.keys(registers).map((register) => (
+              <Typography
+                key={register}
+                sx={{
+                  border: "solid black 1px",
+                  minWidth: "100px",
+                  padding: "0 10px",
+                  boxSizing: "border-box",
+                }}
+              >
+                {registers[register].to_string()}
+              </Typography>
+            ))}
+          </div>
         </div>
         <IOTerminal />
-      {/* <ActionButtons /> */}
       </Paper>
     </>
   );

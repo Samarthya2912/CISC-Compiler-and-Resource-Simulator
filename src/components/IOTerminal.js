@@ -3,6 +3,7 @@ import { Button, TextField } from "@mui/material";
 import { iointerfacecontext } from "../contexts/io-interface-context";
 import { resourceContext } from "../contexts/resources";
 import useIO from "../hooks/useIO";
+import CustomHeader from "./CustomHeader";
 
 const IOTerminal = () => {
   const [iointerfacestate, setIOinterfacestate] =
@@ -11,7 +12,9 @@ const IOTerminal = () => {
   const [inputChangeHandler, getInput] = useIO();
 
   return (
-    <>
+    <div style={{ margin: "20px 0" }}>
+      <CustomHeader>Input Output Interface</CustomHeader>
+      <div style={{ padding: "20px", border: "solid black 1px"  }}>
       <TextField
         id="outlined-basic"
         label="Input"
@@ -35,7 +38,8 @@ const IOTerminal = () => {
           autoComplete: "off"
         }}
       />
-    </>
+      </div>
+    </div>
   );
 };
 

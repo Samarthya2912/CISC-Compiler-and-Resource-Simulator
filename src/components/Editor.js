@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
-import { Alert, Backdrop, Button, ButtonGroup, TextField } from "@mui/material";
+import { Backdrop, TextField } from "@mui/material";
 import "./Editor.css";
-import useResources from "../hooks/useCompile";
-import useExecute from "../hooks/useExecute";
 import { codeContext } from "../contexts/code";
 import { editorContext } from "../contexts/editor";
+import CustomHeader from "./CustomHeader";
 
 const Editor = () => {
   const [code, setCode] = useContext(codeContext);
@@ -18,7 +17,7 @@ const Editor = () => {
         style={{ minWidth: "400px", background: "white", borderRadius: "5px", overflow: "hidden" }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div style={{ background: "dodgerblue", width: "100%", color: "white", fontSize: "larger", display: "flex", padding: "10px", boxSizing: "border-box" }}>Editor</div>
+        <CustomHeader>Editor</CustomHeader>
         <TextField
           placeholder="Type code here..."
           multiline
