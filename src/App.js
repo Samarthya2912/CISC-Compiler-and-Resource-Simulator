@@ -7,6 +7,7 @@ import ResourceContextProvider from "./contexts/resources";
 import Registers from "./components/Registers";
 import CodeContextProvider from "./contexts/code";
 import InputOutputContextProvider from "./contexts/io-interface-context";
+import EditorContextProvider from "./contexts/editor";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <ResourceContextProvider>
         <CodeContextProvider>
           <InputOutputContextProvider>
+          <EditorContextProvider>
             <Navbar />
             <div className="App">
               <Switch>
@@ -35,6 +37,7 @@ function App() {
                 <h1>404 INVALID ROUTE</h1>
               </Switch>
             </div>
+            </EditorContextProvider>
           </InputOutputContextProvider>
         </CodeContextProvider>
       </ResourceContextProvider>

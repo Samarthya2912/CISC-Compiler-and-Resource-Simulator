@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import useResources from "../hooks/useCompile";
 import useExecute from "../hooks/useExecute";
 import { codeContext } from "../contexts/code";
+import OpenEditorButton from "./OpenEditorButton";
 
 const ActionButtons = () => {
   const [code] = useContext(codeContext);
@@ -27,6 +28,7 @@ const ActionButtons = () => {
           <Button variant="outlined" onClick={resetMachine}>
             RESET COMPUTER
           </Button>
+          <OpenEditorButton />
         </ButtonGroup>
       </ButtonGroup>
       {error && <Alert severity="error">Compilation error: {error}</Alert>}
