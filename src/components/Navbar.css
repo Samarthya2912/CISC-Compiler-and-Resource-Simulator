@@ -1,8 +1,13 @@
 .navbar {
-    background-color: #4D4DFF;
-    display: flex;
-    align-items: center;
-    font-size: large;
-    padding: 0 20px;
-    /* margin-right: 50px; */
+  background-color: #ab46d2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  padding: 10px 20px;
+  font-family: "Source Code Pro", monospace;
+}
+
+.main-header {
+  color: white;
 }

@@ -4,10 +4,12 @@ import "./Navbar.css";
 
 const Navbar = () => {
   return (
+    <header>
     <nav className="navbar">
-      <div style={{ color: "white" }}>BISC Compiler, Debugger & Hardware Simulator</div>
-      <ActionButtons />
+      <div className="main-header">BISC Compiler, Debugger & Hardware Simulator</div>
     </nav>
+    <ActionButtons />
+    </header>
   );
 };
 

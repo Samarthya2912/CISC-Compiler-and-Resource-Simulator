@@ -11,29 +11,27 @@ const ActionButtons = () => {
   const [setNewMachineState, resetMachine] = useExecute();
   const [, setOpen] = useContext(editorContext);
 
-
   return (
-    <>
-      <ButtonGroup variant="contained" sx={{ margin: "15px", marginLeft: "10vw", borderColor: "white" }}>
-        <Button variant="text" onClick={() => setOpen(true)} sx={{ color: "white" }}>Open Editor</Button>
-        <Button variant="text" onClick={() => allocateMemory(code)} sx={{ color: "white" }}>
+    <div style={{ backgroundColor: "#ab46d2" }}>
+        <Button variant="text" onClick={() => setOpen(true)} sx={{ color: "white", margin: "0 15px" }}>
+          Open Editor
+        </Button>
+        <Button variant="text" onClick={() => allocateMemory(code)} sx={{ color: "white", margin: "0 15px" }}>
           COMPILE
         </Button>
         <Button
-          variant="text"
-          sx={{ color: "white" }}
+          variant="text" sx={{ color: "white", margin: "0 15px" }}
           onClick={() => {
             setNewMachineState();
           }}
         >
           NEXT INSTRUCTION
         </Button>
-        <Button variant="text" onClick={resetMachine} sx={{ color: "white" }}>
+        <Button variant="text" onClick={resetMachine} sx={{ color: "white", margin: "0 15px" }}>
           RESET
         </Button>
-      </ButtonGroup>
       {error && <Alert severity="error">Compilation error: {error}</Alert>}
-    </>
+    </div>
   );
 };
 

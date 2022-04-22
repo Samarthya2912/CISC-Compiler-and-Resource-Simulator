@@ -8,7 +8,7 @@ const CustomHeader = (props) => {
         maxWidth: "100%",
         minWidth: "100%",
         overflow: "hidden",
-        backgroundColor: "#00B0FF",
+        backgroundColor: "#55D8C1",
         color: "white",
         fontSize: "larger",
         display: "flex",
