@@ -19,15 +19,6 @@ export default function useResources() {
       let translated_code = new bitset(0);
       translated_code.copy(mp[instruction]);
 
-      // if (
-      //   mp[instruction] === undefined ||
-      //   mp[instruction] === null ||
-      //   (translated_code.size === 4 && (arg !== undefined && arg.length !== 3)) ||
-      //   (translated_code.size === 16 && (arg !== undefined && arg.length !== 0))
-      // ) {
-      //   setError(`"${instruction}" not recognized.`);
-      // }
-
       if (translated_code.size === 4) {
         translated_code.append(bitset.hex2bin(arg));
       }

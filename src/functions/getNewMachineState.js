@@ -6,7 +6,6 @@ const getNewMachineState = (instruction, currentState) => {
   // if(instruction.to_string() === bitset.hex2bin("0000").to_string()) return null;
 
   let newMachineState = { ...currentState, MEMORY: [...currentState.MEMORY] };
-
   let opcode = instruction.to_string().substr(0, 4);
   if (opcode === "0111") {
     /* register reference instruction */

@@ -13,8 +13,7 @@ const Editor = () => {
     <Backdrop open={open} onClick={() => setOpen(false)} sx={{ zIndex: 5 }}>
       <div
         className="container"
-        zIndex={15}
-        style={{ minWidth: "400px", background: "white", borderRadius: "5px", overflow: "hidden" }}
+        style={{ minWidth: "400px", background: "white", borderRadius: "5px", overflow: "hidden", zIndex: 15 }}
         onClick={(e) => e.stopPropagation()}
       >
         <CustomHeader>Editor</CustomHeader>

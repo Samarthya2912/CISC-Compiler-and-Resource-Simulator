@@ -3,6 +3,7 @@ import { resourceContext } from "../contexts/resources";
 import getNewMachineState from "../functions/getNewMachineState";
 import useIO from "./useIO";
 import { iointerfacecontext } from "../contexts/io-interface-context";
+import bitset from "../bitset";
 
 const useExecute = () => {
   const [resources, setResources] = useContext(resourceContext);
@@ -18,7 +19,7 @@ const useExecute = () => {
 
     let index = resources.registers["PC"].to_decimal();
     let [i, j] = [Math.floor(index / 8), index % 8];
-    const machine_code = resources["MEMORY"][i][j];
+    const machine_code = new bitset(0); machine_code.copy(resources["MEMORY"][i][j]);
     const newMachineState = getNewMachineState(machine_code, resources);
     if (newMachineState) setResources(newMachineState);
   };

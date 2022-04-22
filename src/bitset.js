@@ -123,13 +123,16 @@ class bitset {
 
     append(b) {
         this.size += b.size;
-        this.bitarray = [...this.bitarray,...b.bitarray];
+        for(let i = 0; i < b.size; i++) {
+            this.bitarray.push(b.bitarray[i]);
+        }
     }
 
     subbitset(i,j) {
         let newbitset = new bitset(j);
         for(let k = 0; k < j; k++) {
-            newbitset.bitarray[k] = this.bitarray[k+i];
+            let temp = this.bitarray[k+i]
+            newbitset.bitarray[k] = temp;
         }
         return newbitset;
     }

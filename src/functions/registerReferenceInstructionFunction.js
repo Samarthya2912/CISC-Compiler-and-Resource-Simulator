@@ -1,9 +1,7 @@
 import bitset from "../bitset";
 
 const regsiterReferenceInstructionFunction = (instruction, currentState) => {
-  let one = bitset.hex2bin("0001");
   currentState.registers["IR"] = instruction;
-
   const instruction_str = instruction.to_string();
   switch (instruction_str) {
     case bitset.hex2bin("7800").to_string():
@@ -25,7 +23,7 @@ const regsiterReferenceInstructionFunction = (instruction, currentState) => {
       currentState.registers["AC"].circulate_left();
       break;
     case bitset.hex2bin("7020").to_string():
-      currentState.registers["AC"].add(one);
+      currentState.registers["AC"].add(bitset.hex2bin("0001"));
       break;
     case bitset.hex2bin("7010").to_string():
       if (currentState.registers["AC"].isPositive())
