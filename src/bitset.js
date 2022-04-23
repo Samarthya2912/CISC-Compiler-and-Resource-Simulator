@@ -141,6 +141,12 @@ class bitset {
         this.size = b.size;
         this.bitarray = [...b.bitarray];
     }
+
+    createCopy() {
+        const b = new bitset(this.size);
+        b.bitarray = [...this.bitarray];
+        return b;
+    }
 };
 
 export default bitset;

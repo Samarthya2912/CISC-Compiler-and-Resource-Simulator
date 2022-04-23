@@ -7,17 +7,22 @@ export default function useResources() {
   const [resources, setResources] = useContext(resourceContext);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    console.log(resources);
-  }, [resources]);
-
   const allocateMemory = (code) => {
     const lines = code.split(";");
     const instructions = lines.map((line) => line.replace(/\s+/g, " ").trim());
     const machine_code = instructions.map((instruction_line) => {
       let [instruction, arg] = instruction_line.split(" ");
       let translated_code = new bitset(0);
+
+      if(mp[instruction] === null || mp[instruction] === undefined) {
+        setError(new Error(`Unrecognized instruction error at ${instruction}`));
+      }
+
       translated_code.copy(mp[instruction]);
+      
+      if(translated_code !== undefined && ((translated_code.size === 4 && arg.length !== 3) || !(translated_code.size === 16 && arg === undefined))) {
+        setError(new Error(`Argument parsing error at ${instruction}: args: ${arg}`));
+      }
 
       if (translated_code.size === 4) {
         translated_code.append(bitset.hex2bin(arg));
@@ -42,7 +47,7 @@ export default function useResources() {
       updatedMemoryArr[i][j].copy(machine_code[index]);
     }
 
-    if (!error) setResources({ ...resources, MEMORY: updatedMemoryArr });
+    if (error === null) setResources({ ...resources, MEMORY: updatedMemoryArr });
   };
 
   return [error, allocateMemory];

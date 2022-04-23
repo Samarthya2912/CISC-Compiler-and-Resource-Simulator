@@ -30,7 +30,7 @@ const ActionButtons = () => {
         <Button variant="text" onClick={resetMachine} sx={{ color: "white", margin: "0 15px" }}>
           RESET
         </Button>
-      {error && <Alert severity="error">Compilation error: {error}</Alert>}
+      {error && <Alert severity="error">Compilation error: {error.message}</Alert>}
     </div>
   );
 };
