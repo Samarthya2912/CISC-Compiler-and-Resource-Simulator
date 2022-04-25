@@ -1,0 +1,14 @@
+.container {
+    background-color: #ab46d2;
+    height: 100vh;
+    width: 100vw;
+    z-index: 5;
+    position: absolute;
+    overflow: hidden;
+    color: white;
+    font-size: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Source Code Pro", monospace;
+}

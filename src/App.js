@@ -10,8 +10,12 @@ import InputOutputContextProvider from "./contexts/io-interface-context";
 import EditorContextProvider from "./contexts/editor";
 import RunningModeContextProvider from "./contexts/running_mode";
 import DebugStateContextProvider from "./contexts/debug-state";
+import IntroPage from "./components/IntroPage";
+import { useState } from "react";
 
 function App() {
+  const [introVisibility,setIntroVisibility] = useState(true);
+
   return (
     <Router>
       <ResourceContextProvider>
@@ -20,6 +24,7 @@ function App() {
             <EditorContextProvider>
               <RunningModeContextProvider>
                 <DebugStateContextProvider>
+                  {introVisibility && <IntroPage setIntroVisibility={setIntroVisibility} />}
                   <Navbar />
                   <div className="App">
                     <Switch>
