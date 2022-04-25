@@ -9,7 +9,7 @@ const Registers = () => {
 
   return (
     <>
-      <Paper elevation={0} sx={{ margin: "40px 0" }}>
+      <Paper elevation={0} sx={{ margin: "20px 0" }}>
         <CustomHeader>Registers</CustomHeader>
         <div style={{ display: "flex" }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
