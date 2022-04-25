@@ -43,6 +43,7 @@ const useExecute = () => {
 
     setResources(newMachineState);
     setIOinterfacestate({ inp: "", out: "" });
+    setRunningMode(false);
   };
 
   const continue_running = () => {

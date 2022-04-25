@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import bitset from "../bitset";
 import { iointerfacecontext } from "../contexts/io-interface-context";
 import { resourceContext } from "../contexts/resources";
