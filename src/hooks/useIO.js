@@ -48,5 +48,5 @@ export default function useIO() {
         setIOinterfacestate(newiostate);
     } 
 
-    return [inputChangeHandler,getInput,getOutput]
+    return [inputChangeHandler,getInput,getOutput,iointerfacestate,setIOinterfacestate]
 }

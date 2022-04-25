@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import bitset from "../bitset";
 import { resourceContext } from "../contexts/resources";
 import mp from "../utils/translation_map";
@@ -20,7 +20,7 @@ export default function useResources() {
 
       translated_code.copy(mp[instruction]);
       
-      if(translated_code !== undefined && ((translated_code.size === 4 && arg.length !== 3) || !(translated_code.size === 16 && arg === undefined))) {
+      if(translated_code !== undefined && ((translated_code.size === 4 && arg.length !== 3))) {
         setError(new Error(`Argument parsing error at ${instruction}: args: ${arg}`));
       }
 

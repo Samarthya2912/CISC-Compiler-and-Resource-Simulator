@@ -1,0 +1,14 @@
+ION;
+INP;
+STA 011;
+CLA;
+ION;
+INP;
+ADD 011;
+OUT;
+ION;
+CLA;
+INC;
+OUT;
+ION;
+HLT;

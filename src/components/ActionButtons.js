@@ -8,7 +8,7 @@ import { editorContext } from "../contexts/editor";
 const ActionButtons = () => {
   const [code] = useContext(codeContext);
   const [error, allocateMemory] = useResources();
-  const [setNewMachineState, resetMachine] = useExecute();
+  const [setNewMachineState, resetMachine, continue_running] = useExecute();
   const [, setOpen] = useContext(editorContext);
 
   return (
@@ -18,6 +18,9 @@ const ActionButtons = () => {
         </Button>
         <Button variant="text" onClick={() => allocateMemory(code)} sx={{ color: "white", margin: "0 15px" }}>
           COMPILE
+        </Button>
+        <Button variant="text" onClick={continue_running} sx={{ color: "white", margin: "0 15px" }}>
+          RUN
         </Button>
         <Button
           variant="text" sx={{ color: "white", margin: "0 15px" }}

@@ -8,6 +8,7 @@ import Registers from "./components/Registers";
 import CodeContextProvider from "./contexts/code";
 import InputOutputContextProvider from "./contexts/io-interface-context";
 import EditorContextProvider from "./contexts/editor";
+import RunningModeContextProvider from "./contexts/running_mode";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <CodeContextProvider>
           <InputOutputContextProvider>
             <EditorContextProvider>
+              <RunningModeContextProvider>
               <Navbar />
               <div className="App">
                 <Switch>
@@ -36,6 +38,7 @@ function App() {
                   <h1>404 INVALID ROUTE</h1>
                 </Switch>
               </div>
+              </RunningModeContextProvider>
             </EditorContextProvider>
           </InputOutputContextProvider>
         </CodeContextProvider>
