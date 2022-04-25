@@ -19,6 +19,7 @@ export default function useResources() {
       }
 
       translated_code.copy(mp[instruction]);
+      console.log(translated_code);
       
       if(translated_code !== undefined && ((translated_code.size === 4 && arg.length !== 3))) {
         setError(new Error(`Argument parsing error at ${instruction}: args: ${arg}`));

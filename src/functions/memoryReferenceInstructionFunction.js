@@ -38,7 +38,7 @@ let memoryReferenceInstructionFunction = (instruction, currentState) => {
     let [i, j] = wordIndex(addressIndex);
     currentState.MEMORY[i][j].copy(currentState.registers["AC"]);
   } else if (opcode === "0100") {
-    currentState.registers["AR"].to_decimal();
+    // currentState.registers["AR"].to_decimal();
     currentState.registers["PC"].copy(currentState.registers["AR"]);
   } else if (opcode === "0101") {
     /* for phase 2 */
@@ -48,6 +48,7 @@ let memoryReferenceInstructionFunction = (instruction, currentState) => {
     currentState.registers["DR"].copy(currentState.MEMORY[i][j]);
     currentState.registers["AC"].copy(currentState.MEMORY[i][j]);
     currentState.registers["AC"].add(bitset.hex2bin("0001"));
+    currentState.MEMORY[i][j].copy(currentState.registers["AC"]);
     if (currentState.registers["AC"].isZero()) {
       currentState.registers["PC"].add(bitset.hex2bin("001"));
     }
