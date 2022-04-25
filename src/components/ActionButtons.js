@@ -20,7 +20,7 @@ const ActionButtons = () => {
         <Button variant="text" onClick={() => setOpen(true)} sx={{ color: "white", margin: "0 15px" }}>
           Open Editor
         </Button>
-        <Button variant="text" onClick={() => allocateMemory(code)} sx={{ color: "white", margin: "0 15px" }} disabled={runningMode}>
+        <Button variant="text" onClick={() => allocateMemory(code)} sx={{ color: "white", margin: "0 15px" }} disabled={runningMode || debugMode || code === ""}>
           COMPILE
         </Button>
         <Button variant="text" onClick={continue_running} sx={{ color: "white", margin: "0 15px" }} disabled={debugMode}>
