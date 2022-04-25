@@ -5,13 +5,14 @@ import useIO from "./useIO";
 import { iointerfacecontext } from "../contexts/io-interface-context";
 import bitset from "../bitset";
 import { runningModeContext } from "../contexts/running_mode";
+import { debugStateContext } from "../contexts/debug-state";
 
 const useExecute = () => {
   const [resources, setResources] = useContext(resourceContext);
-  const [iointerfaceState, setIOinterfacestate] =
-    useContext(iointerfacecontext);
+  const [iointerfaceState, setIOinterfacestate] = useContext(iointerfacecontext);
   const [, getInput, getOutput] = useIO();
   const [, setRunningMode] = useContext(runningModeContext);
+  const [, setDebugMode] = useContext(debugStateContext);
 
   const setNewMachineState = () => {
     if (resources.registers["INTERRUPT"].to_bool()) {
@@ -26,6 +27,7 @@ const useExecute = () => {
     machine_code.copy(resources["MEMORY"][i][j]);
     const newMachineState = getNewMachineState(machine_code, resources);
     if (newMachineState) setResources(newMachineState);
+    setDebugMode(true);
   };
 
   const resetMachine = () => {
@@ -44,6 +46,7 @@ const useExecute = () => {
     setResources(newMachineState);
     setIOinterfacestate({ inp: "", out: "" });
     setRunningMode(false);
+    setDebugMode(false);
   };
 
   const continue_running = () => {
@@ -83,6 +86,9 @@ const useExecute = () => {
       currentioState.out += "  "+currentState.registers.OUTR.to_decimal();
       currentState.registers.FGO.clear();
       currentState.registers.INTERRUPT.clear();
+      let index = resources.registers["PC"].to_decimal();
+      let [i, j] = [Math.floor(index / 8), index % 8];  
+      currentState.registers.IR.copy(currentState.MEMORY[i][j]);
     }
 
     setRunningMode(true);
