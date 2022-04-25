@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Backdrop, TextField } from "@mui/material";
+import { Backdrop, Button, TextField } from "@mui/material";
 import "./Editor.css";
 import { codeContext } from "../contexts/code";
 import { editorContext } from "../contexts/editor";
@@ -25,6 +25,7 @@ const Editor = () => {
           style={{ minWidth: "400px", background: "white" }}
           onChange={(e) => setCode(e.target.value)}
         ></TextField>
+        <Button variant="text" sx={{ width: "100%", borderRadius: "0" }} onClick={() => setOpen(false)}>Done!</Button>
       </div>
     </Backdrop>
   );
