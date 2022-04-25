@@ -28,7 +28,7 @@ const IntroPage = ({ setIntroVisibility }) => {
     <>
       <div className="container">
           <div>{text || "Hi!"}</div>
-          {btn && <Button sx={{ backgroundColor: "teal", color: "white", marginTop: "50px" }} onClick={() => setIntroVisibility(false)}>Get Started!</Button>}
+          {btn && <Button sx={{ backgroundColor: "#999FCD", color: "white", marginTop: "50px", fontWeight: 750, fontSize: "medium" }} onClick={() => setIntroVisibility(false)}>Get Started!</Button>}
       </div>
     </>
   );
